@@ -1,5 +1,6 @@
 # Scalable URL Shortener (Iterative Development)
 
+[![License: AGPL v3](https://img.shields.io/badge/License-AGPL_v3-blue.svg)](https://www.gnu.org/licenses/agpl-3.0)
 ![Kotlin](https://img.shields.io/badge/Kotlin-2.2.21-7F52FF?logo=kotlin&logoColor=white)
 ![Spring Boot](https://img.shields.io/badge/Spring%20Boot-4.0.3-6DB33F?logo=springboot&logoColor=white)
 ![Java](https://img.shields.io/badge/Java-21-ED8B00?logo=openjdk&logoColor=white)
@@ -52,6 +53,13 @@ This project is a playground for advanced distributed system concepts. Watch thi
 -   [ ] **Phase 6: Event-Driven Analytics** (Introducing **Kafka** for async events and **Cassandra** for billion-scale click tracking)
 -   [ ] **Phase 7: Horizontal Scaling** (PostgreSQL Sharding using **Citus** and Consistent Hashing)
     
+----------
+
+## License
+
+This project is licensed under the GNU Affero General Public License v3.0.
+See the LICENSE file for details.
+
 ----------
 
 _Built with ❤️ and pragmatic engineering._
