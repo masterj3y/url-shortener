@@ -1,3 +1,10 @@
 spring:
   application:
     name: url-shortener
+  profiles:
+    active: ${PROFILE:dev}
+  r2dbc:
+    url: ${R2DBC_URI:r2dbc:postgresql://shortener_user:super_secret_password@localhost:5432/shortener_db}
+  sql:
+    init:
+      mode: always

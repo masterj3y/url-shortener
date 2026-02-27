@@ -1,0 +1,6 @@
+CREATE TABLE IF NOT EXISTS links (
+    short_code VARCHAR(15) PRIMARY KEY,
+    original_url TEXT NOT NULL,
+    user_id BIGINT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);

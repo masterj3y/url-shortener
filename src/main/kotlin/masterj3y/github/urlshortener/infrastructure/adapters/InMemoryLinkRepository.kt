@@ -2,9 +2,11 @@ package masterj3y.github.urlshortener.infrastructure.adapters
 
 import masterj3y.github.urlshortener.application.ports.LinkRepositoryPort
 import masterj3y.github.urlshortener.domain.Link
+import org.springframework.context.annotation.Profile
 import org.springframework.stereotype.Component
 
 @Component
+@Profile("in-memory")
 class InMemoryLinkRepository : LinkRepositoryPort {
     private val db = java.util.concurrent.ConcurrentHashMap<String, Link>()
 
