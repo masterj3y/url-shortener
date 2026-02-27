@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component
 class InMemoryLinkRepository : LinkRepositoryPort {
     private val db = java.util.concurrent.ConcurrentHashMap<String, Link>()
 
-    override fun save(link: Link) = link.also { db[link.shortCode] = it }
+    override suspend fun save(link: Link) = link.also { db[link.shortCode] = it }
 
-    override fun findByCode(code: String) = db[code]
+    override suspend fun findByCode(code: String) = db[code]
 }

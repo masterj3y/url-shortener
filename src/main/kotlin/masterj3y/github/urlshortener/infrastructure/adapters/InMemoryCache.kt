@@ -7,9 +7,9 @@ import org.springframework.stereotype.Component
 class InMemoryCacheAdapter : CachePort {
     private val map = java.util.concurrent.ConcurrentHashMap<String, String>()
 
-    override fun get(code: String) = map[code]
+    override suspend fun get(code: String) = map[code]
 
-    override fun set(
+    override suspend fun set(
         code: String,
         originalUrl: String,
         ttlSeconds: Long,

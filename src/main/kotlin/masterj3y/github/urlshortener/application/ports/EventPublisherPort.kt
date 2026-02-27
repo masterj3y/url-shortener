@@ -1,12 +1,12 @@
 package masterj3y.github.urlshortener.application.ports
 
 interface EventPublisherPort {
-    fun publishLinkCreated(
+    suspend fun publishLinkCreated(
         shortCode: String,
         originalUrl: String,
     )
 
-    fun publishLinkClicked(
+    suspend fun publishLinkClicked(
         shortCode: String,
         ipAddress: String,
     )

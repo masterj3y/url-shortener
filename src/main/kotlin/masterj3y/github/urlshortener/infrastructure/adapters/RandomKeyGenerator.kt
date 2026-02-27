@@ -5,7 +5,7 @@ import org.springframework.stereotype.Component
 
 @Component
 class RandomKeyGeneratorAdapter : KeyGeneratorPort {
-    override fun fetchCode(): String {
+    override suspend fun fetchCode(): String {
         val chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
         return (1..7).map { chars.random() }.joinToString("")
     }

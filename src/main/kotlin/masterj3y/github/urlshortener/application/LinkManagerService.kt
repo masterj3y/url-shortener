@@ -14,7 +14,7 @@ class LinkManagerService(
     private val cache: CachePort,
     private val eventPublisher: EventPublisherPort,
 ) {
-    fun createShortLink(
+    suspend fun createShortLink(
         originalUrl: String,
         userId: Long,
     ): String {
@@ -27,7 +27,7 @@ class LinkManagerService(
         return shortCode
     }
 
-    fun getOriginalUrl(
+    suspend fun getOriginalUrl(
         shortCode: String,
         ipAddress: String,
     ): String {

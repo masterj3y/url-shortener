@@ -1,9 +1,9 @@
 package masterj3y.github.urlshortener.application.ports
 
 interface CachePort {
-    fun get(code: String): String?
+    suspend fun get(code: String): String?
 
-    fun set(
+    suspend fun set(
         code: String,
         originalUrl: String,
         ttlSeconds: Long,
