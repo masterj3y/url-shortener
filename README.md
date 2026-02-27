@@ -45,7 +45,7 @@ curl -X POST http://localhost:8080/api/v1/links \
 This project is a playground for advanced distributed system concepts. Watch this space as we scale:
 
 -   [x] **Phase 1: The Foundation** (Kotlin, Coroutines, Hexagonal Architecture, In-Memory MVP)
--   [ ] **Phase 2: Persistent Storage** (Docker Compose, PostgreSQL, R2DBC integration)
+-   [x] **Phase 2: Persistent Storage** (Docker Compose, PostgreSQL, R2DBC integration)
 -   [ ] **Phase 3: High-Performance Read Layer** (Redis Cluster integration via `CachePort`)
 -   [ ] **Phase 4: Polyglot Microservice** (Migrating the read/redirect heavy lifting to a bare-metal **Rust + Tokio** HTTP server)
 -   [ ] **Phase 5: Key Generation Service (KGS)** (Solving the Base62 collision problem with a dedicated pre-generation worker)
