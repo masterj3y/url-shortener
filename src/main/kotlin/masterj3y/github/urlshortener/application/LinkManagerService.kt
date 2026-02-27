@@ -3,8 +3,8 @@ package masterj3y.github.urlshortener.application
 import masterj3y.github.urlshortener.application.ports.CachePort
 import masterj3y.github.urlshortener.application.ports.EventPublisherPort
 import masterj3y.github.urlshortener.application.ports.KeyGeneratorPort
+import masterj3y.github.urlshortener.application.ports.LinkRepositoryPort
 import masterj3y.github.urlshortener.domain.Link
-import masterj3y.github.urlshortener.domain.LinkRepositoryPort
 import org.springframework.stereotype.Service
 
 @Service
