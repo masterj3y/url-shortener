@@ -1,0 +1,38 @@
+### 
+
+@host = http://localhost:8080
+
+
+### 1. Create a new short link
+
+# @name createShortLink
+
+POST {{host}}/api/v1/links HTTP/1.1
+Content-Type: application/json
+
+{
+  "originalUrl": "https://github.com/masterj3y/url-shortener",
+  "userId": 1024
+}
+
+
+### 
+
+
+### 2. Get original url
+
+# @name redirectLink
+
+GET {{host}}/scX6KFK HTTP/1.1
+X-Forwarded-For: 192.168.1.50
+
+
+### 
+
+
+### 4. Not found test
+
+# @name notFoundLink
+
+GET {{host}}/invalidCode HTTP/1.1
+X-Forwarded-For: 127.0.0.1

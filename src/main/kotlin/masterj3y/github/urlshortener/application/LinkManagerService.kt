@@ -5,6 +5,7 @@ import masterj3y.github.urlshortener.application.ports.EventPublisherPort
 import masterj3y.github.urlshortener.application.ports.KeyGeneratorPort
 import masterj3y.github.urlshortener.application.ports.LinkRepositoryPort
 import masterj3y.github.urlshortener.domain.Link
+import masterj3y.github.urlshortener.domain.exceptions.LinkNotFoundException
 import org.springframework.stereotype.Service
 
 @Service
@@ -38,6 +39,6 @@ class LinkManagerService(
         repository.findByCode(shortCode)?.let {
             cache.set(it.shortCode, it.originalUrl, 3600)
             return it.originalUrl
-        } ?: throw RuntimeException("Link not found!")
+        } ?: throw LinkNotFoundException(shortCode)
     }
 }
