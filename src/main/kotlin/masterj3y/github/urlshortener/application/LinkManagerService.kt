@@ -23,6 +23,8 @@ class LinkManagerService(
         val link = Link(shortCode = shortCode, originalUrl = originalUrl, userId = userId)
 
         repository.save(link)
+
+        cache.set(link.shortCode, link.originalUrl, 3600)
         eventPublisher.publishLinkCreated(shortCode, originalUrl)
 
         return shortCode
