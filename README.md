@@ -1,5 +1,6 @@
 # Scalable URL Shortener (Iterative Development)
 
+![GitHub release (including pre-releases)](https://img.shields.io/github/v/release/masterj3y/url-shortener?include_prereleases)
 [![License: AGPL v3](https://img.shields.io/badge/License-AGPL_v3-blue.svg)](LICENSE)
 ![Kotlin](https://img.shields.io/badge/Kotlin-2.2.21-7F52FF?logo=kotlin&logoColor=white)
 ![Spring Boot](https://img.shields.io/badge/Spring%20Boot-4.0.3-6DB33F?logo=springboot&logoColor=white)
