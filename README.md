@@ -11,17 +11,45 @@
 
 A high-performance, reactive URL shortener built with **Kotlin Coroutines** and **Spring WebFlux**. 
 
+```mermaid
+graph TD
+    classDef core fill:#d4e6ff,stroke:#2c3e50,stroke-width:2px,rx:10,ry:10,color:#1a2634;
+    classDef port fill:#fff2cc,stroke:#d4a017,stroke-width:2px,stroke-dasharray: 5 5,rx:15,ry:15,color:#7d5d0b;
+    classDef adapter fill:#d5f0d5,stroke:#1e7e1e,stroke-width:2px,rx:12,ry:12,color:#0b4f0b;
+    classDef db fill:#f0d0ff,stroke:#6a1b9a,stroke-width:2px,rx:20,ry:20,color:#38006b;
+
+    Client([🌐 Client / Browser]) -->|HTTP WebFlux| Controller
+
+    subgraph Primary [📤 Primary Adapters]
+        Controller[🔗 LinkController]:::adapter
+    end
+
+    subgraph Hexagon [🧠 Application Core / Domain]
+        Controller -->|suspend call| Service(⚙️ LinkManagerService):::core
+        Service -->|uses| CachePort[[💾 CachePort]]:::port
+        Service -->|uses| RepoPort[[📁 LinkRepositoryPort]]:::port
+    end
+
+    subgraph Secondary [📥 Secondary Adapters]
+        RedisAdapter[🔴 RedisCacheAdapter]:::adapter -.->|implements| CachePort
+        PgAdapter[🐘 PostgresRepositoryAdapter]:::adapter -.->|implements| RepoPort
+    end
+
+    subgraph External [☁️ External Infrastructure]
+        RedisAdapter -->|Reactive Redis| Redis[(🔥 Redis)]:::db
+        PgAdapter -->|Spring Data R2DBC| PostgreSQL[(🗄️ PostgreSQL)]:::db
+    end
+```
+
 ## The Philosophy: Overcoming Perfectionism
 This project follows the **Walking Skeleton** pattern and **Iterative Delivery**. 
 Instead of over-engineering from day one, this repository starts with a clean, perfectly abstracted **Hexagonal Architecture (Ports and Adapters)**. The core business logic is completely decoupled from the infrastructure. 
 
 Currently, it runs as a blazing-fast MVP with In-Memory adapters. As the project evolves, we will swap these dummy adapters with enterprise-grade infrastructure (see Roadmap) *without touching a single line of the core domain logic*.
 
-## Current Features (v0.1.0 - MVP)
-* **Fully Reactive Stack:** Built on Netty using Kotlin `suspend` functions and WebFlux.
-* **Hexagonal Architecture:** Strict separation of Domain, Application, and Infrastructure layers.
-* **Standard Error Handling:** Implementation of RFC 7807 (ProblemDetail) for clean API errors (e.g., 404 Not Found).
-* **Developer Experience (DX):** Native `.http` files included for instant local testing.
+## Current Features (v0.3.0 - Scalable Read Layer)
+* **Distributed Cache Layer:** Redis Cluster integration via `CachePort`.
+* **Read Optimization:** O(1) redirect performance for hot links.
 
 ## Quick Start
 
